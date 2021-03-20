@@ -1,6 +1,6 @@
 # HTTP Security Headers Sandbox
 
-This app is a sandbox for demonstrating web security exploits, for which certain HTTP headers can help protect against.
+This ExpressJS app is a sandbox for demonstrating web security exploits, for which certain HTTP headers can help protect against.
 
 ## Installation
 
@@ -10,7 +10,7 @@ The following needs to be installed on your machine in order to run locally:
 
 * **NodeJS**, version 14.
 * **Yarn**.
-* **Google Chrome**.
+* **Google Chrome**, minimum version 88.
 
 You must modify your hosts file (on Windows) or use a hosts switcher such as Gas Mask (on Mac) to
 include the following entries:
@@ -34,7 +34,7 @@ Before using this app, ensure that all tests pass on your machine first, using t
 
 This will run Jest unit tests and Nightwatch journey tests to verify the protections against exploit scenarios.
 
-## Usage
+## General Usage
 
 The service can be ran with this command to experience the demonstrations of vulnerabilities/exploits:
 
@@ -49,12 +49,10 @@ Or, it can be ran with this command to experience the demonstration of being pro
 
 `yarn start:secure`
 
-### Content Security Policy
+## Specific Usage: Content Security Policy
 
 Information on this header can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
-#### Clickjacking
+### Clickjacking
 
-
-
-#### Cross-site scripting
+### Cross-site scripting

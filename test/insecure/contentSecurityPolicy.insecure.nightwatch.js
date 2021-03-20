@@ -18,7 +18,7 @@ module.exports = {
         server.close();
     },
 
-    "Will prevent iframe from loading": (browser) => {
+    "Will not prevent iframe from loading": (browser) => {
         browser
             .url(`http://www.evil.com:${port}/clickjack`)
             .waitForElementVisible("iframe")
@@ -27,6 +27,19 @@ module.exports = {
 
                 if(securityLogs.length) {
                     throw new Error("Expected iframe to load successfully.");
+                }
+            })
+            .end();
+    },
+    "Will not prevent inline scripts from executing": (browser) => {
+        browser
+            .url(`http://www.innocent.com:${port}/home`)
+            .waitForElementVisible("h1")
+            .getLog("browser", (result) => {
+                const securityLogs = result.filter((log) => log.message.includes("this log comes from an inline script"));
+
+                if(securityLogs.length) {
+                    throw new Error("Expected inline script to execute successfully.");
                 }
             })
             .end();

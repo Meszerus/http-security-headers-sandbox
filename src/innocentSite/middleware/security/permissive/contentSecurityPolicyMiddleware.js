@@ -4,7 +4,6 @@ const PERMISSIVE_DIRECTIVE_VALUES = [
     "*",
     "'unsafe-eval'",
     "'unsafe-inline'",
-    "'unsafe-dynamic'",
     "about:",
     "blob:",
     "data:",

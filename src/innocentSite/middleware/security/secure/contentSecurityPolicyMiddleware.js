@@ -4,7 +4,6 @@ const PERMISSIVE_DIRECTIVE_VALUES = [
     "*",
     "'unsafe-eval'",
     "'unsafe-inline'",
-    "'unsafe-dynamic'",
     "about:",
     "blob:",
     "data:",
@@ -17,6 +16,7 @@ const PERMISSIVE_DIRECTIVE_VALUES = [
 module.exports = helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: PERMISSIVE_DIRECTIVE_VALUES,
-        frameAncestors: "'none'"
+        frameAncestors: "'none'",
+        scriptSrc: "https://cdn.innocent.com"
     }
 });

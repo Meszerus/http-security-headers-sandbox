@@ -2,12 +2,10 @@ const express = require("express");
 
 const app = express();
 
-if(process.env.PROTECTION_MODE === "permissive") {
-    app.use(require("./middleware/security/permissive/contentSecurityPolicyMiddleware"));
-}
+const protectionMode = process.env.PROTECTION_MODE;
 
-if(process.env.PROTECTION_MODE === "secure") {
-    app.use(require("./middleware/security/secure/contentSecurityPolicyMiddleware"));
+if(protectionMode !== "naked") {
+    app.use(require(`./middleware/security/${protectionMode}/contentSecurityPolicyMiddleware`));
 }
 
 app.use(require("./route/page/homePageRoute"));
