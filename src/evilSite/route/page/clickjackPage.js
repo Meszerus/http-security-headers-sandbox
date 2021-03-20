@@ -2,8 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/clickjack", async (req, res) => {
-    res.render("clickjack", { site: { id: "evil" } });
+router.get("/clickjack", async (_, res) => {
+    res.render("clickjack", {});
 });
 
 module.exports = router;

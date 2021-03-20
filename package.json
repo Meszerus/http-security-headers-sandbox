@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "author": "Meszerus",
   "repository": "https://github.com/Meszerus/http-security-headers-sandbox",
-  "private": true,
   "scripts": {
     "start:naked": "PROTECTION_MODE=naked node src/app.js",
     "start:permissive": "PROTECTION_MODE=permissive node src/app.js",

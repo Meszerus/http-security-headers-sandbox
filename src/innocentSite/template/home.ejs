@@ -1,8 +1,11 @@
 <HTML>
-    <head></head>
+    <head>
+        <title>Innocent Site</title>
+    </head>
     <body style="background-color: aliceblue;">
-        <h1><%- site.id %></h1>
+        <h1>INNOCENT</h1>
         <h2>You should only be seeing this page on www.innocent.com</h2>
-        <script>console.log("innocent.com - this log comes from an inline script.")</script>
+        <p>For testing Referrer Policy, here are <a href="http://www.evil.com/home">http</a> and <a href="https://www.evil.com/home">https</a> links to evil.com's home page.</p>
+        <script>console.log("innocent.com - this log comes from an inline script.");</script>
     </body>
 </HTML>

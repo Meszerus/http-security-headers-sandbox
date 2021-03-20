@@ -51,11 +51,18 @@ Or, it can be ran with this command to experience the demonstration of being pro
 
 ## Specific Usage: Content Security Policy
 
-Information on this header can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+More information on this header can be found on:
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+* [Scott Helme's blog](https://scotthelme.co.uk/tag/csp/).
 
 ### Clickjacking
 
 ### Cross-site scripting
+
+## Specific Usage: Referrer Policy
+
+More information on this header can be found on:
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy).
 
 ## Specific Usage: Powered By
 
