@@ -4,8 +4,13 @@ const app = express();
 
 const protectionMode = process.env.PROTECTION_MODE;
 
-if(protectionMode !== "naked") {
+if([ "permissive", "secure" ].includes(protectionMode)) {
     app.use(require(`./middleware/security/${protectionMode}/contentSecurityPolicyMiddleware`));
+
+    if(protectionMode === "secure") {
+        // There are no "permissive" variants of the following - they are binary yes/no secure.
+        app.use(require(`./middleware/informational/secure/poweredByMiddleware`));
+    }
 }
 
 app.use(require("./route/page/homePageRoute"));

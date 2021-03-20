@@ -56,3 +56,15 @@ Information on this header can be found on [MDN](https://developer.mozilla.org/e
 ### Clickjacking
 
 ### Cross-site scripting
+
+## Specific Usage: Powered By
+
+Some frameworks (in this case, ExpressJS) will automatically set a value into the response header "x-powered-by" that
+identify themselves. However, this exposure of which tech/framework you are using better clues in a malicious actor on
+what kind of potential vulnerabilities to attempt exploiting.
+
+Accessing `http://www.innocent.com/home` in Insecure/Permissive mode, you can see in your browser's Network tab that a
+`x-powered-by` response header is present with the value `Express`.
+
+Accessing `http://www.innocent.com/home` in Secure mode, you can see that the `x-powered-by` response header has been
+unset entirely.

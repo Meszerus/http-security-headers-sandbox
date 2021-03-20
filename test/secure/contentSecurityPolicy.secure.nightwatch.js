@@ -19,8 +19,7 @@ module.exports = {
     },
 
     "Will prevent iframe from loading": (browser) => {
-        browser
-            .url(`http://www.evil.com:${port}/clickjack`)
+        browser.url(`http://www.evil.com:${port}/clickjack`)
             .waitForElementVisible("iframe")
             .getLog("browser", (result) => {
                 const securityLogs = result.filter((log) => log.message.includes("Refused to frame 'http://www.innocent.com/'"));
@@ -32,8 +31,7 @@ module.exports = {
             .end();
     },
     "Will prevent inline scripts from executing": (browser) => {
-        browser
-            .url(`http://www.innocent.com:${port}/home`)
+        browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {
                 const securityLogs = result.filter((log) => log.message.includes("Refused to execute inline script"));
