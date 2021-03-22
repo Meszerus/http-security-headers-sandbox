@@ -8,12 +8,14 @@
     "start:permissive": "PROTECTION_MODE=permissive node src/app.js",
     "start:secure": "PROTECTION_MODE=secure node src/app.js",
     "test": "yarn test:insecure && yarn test:secure",
-    "test:insecure": "yarn _test:csp:insecure && yarn _test:poweredby:insecure",
+    "test:insecure": "yarn _test:csp:insecure && yarn _test:poweredby:insecure && yarn _test:referrerPolicy:insecure",
     "test:secure": "yarn _test:csp:secure && yarn _test:poweredby:secure",
     "_test:csp:insecure": "PROTECTION_MODE=permissive nightwatch test/insecure/contentSecurityPolicy.insecure.nightwatch.js -e chrome --headless",
     "_test:csp:secure": "PROTECTION_MODE=secure nightwatch test/secure/contentSecurityPolicy.secure.nightwatch.js -e chrome --headless",
     "_test:poweredby:insecure": "PROTECTION_MODE=naked nightwatch test/insecure/poweredBy.insecure.nightwatch.js -e chrome --headless",
-    "_test:poweredby:secure": "PROTECTION_MODE=secure nightwatch test/secure/poweredBy.secure.nightwatch.js -e chrome --headless"
+    "_test:poweredby:secure": "PROTECTION_MODE=secure nightwatch test/secure/poweredBy.secure.nightwatch.js -e chrome --headless",
+    "_test:referrerPolicy:insecure": "PROTECTION_MODE=permissive nightwatch test/insecure/referrerPolicy.insecure.nightwatch.js -e chrome --headless",
+    "_test:referrerPolicy:secure": "PROTECTION_MODE=secure nightwatch test/secure/referrerPolicy.secure.nightwatch.js -e chrome --headless"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
