@@ -15,7 +15,8 @@
     "_test:poweredby:insecure": "PROTECTION_MODE=naked nightwatch test/insecure/poweredBy.insecure.nightwatch.js -e chrome --headless",
     "_test:poweredby:secure": "PROTECTION_MODE=secure nightwatch test/secure/poweredBy.secure.nightwatch.js -e chrome --headless",
     "_test:referrerPolicy:insecure": "PROTECTION_MODE=permissive nightwatch test/insecure/referrerPolicy.insecure.nightwatch.js -e chrome --headless",
-    "_test:referrerPolicy:secure": "PROTECTION_MODE=secure nightwatch test/secure/referrerPolicy.secure.nightwatch.js -e chrome --headless"
+    "_test:referrerPolicy:secure": "PROTECTION_MODE=secure nightwatch test/secure/referrerPolicy.secure.nightwatch.js -e chrome --headless",
+    "_test:frameOptions:secure": "PROTECTION_MODE=secure nightwatch test/secure/frameOptions.secure.nightwatch.js -e chrome --headless"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

@@ -1,12 +1,8 @@
-const express = require("express");
 const request = require('request');
-const path = require("path");
-
 const { app } = require("../../src/appConfiguration");
+
 const port = 80;
 let server;
-
-app.use(express.static(path.join(__dirname, "csp-site")));
 
 module.exports = {
     before() {

@@ -59,6 +59,15 @@ More information on this header can be found on:
 
 ### Cross-site scripting
 
+## Specific Usage: Frame Options
+
+**This header is superseded by the frame-ancestors directive of the Content Security Policy header. \
+Not only is the CSP header more comprehensive, but also Frame Options has limited configuration:
+the most permissive setting (`ALLOW-FROM`) has only limited browser support.**
+
+More information on this header can be found on:
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options).
+
 ## Specific Usage: Referrer Policy
 
 More information on this header can be found on:

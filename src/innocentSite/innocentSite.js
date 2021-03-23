@@ -11,6 +11,7 @@ if([ "permissive", "secure" ].includes(protectionMode)) {
     if(protectionMode === "secure") {
         // There are no "permissive" variants of the following - they are binary yes/no secure.
         app.use(require(`./middleware/informational/secure/poweredByMiddleware`));
+        // app.use(require(`./middleware/security/secure/frameOptionsMiddleware`));
     }
 }
 
