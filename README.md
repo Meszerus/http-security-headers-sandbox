@@ -73,6 +73,8 @@ More information on this header can be found on:
 More information on this header can be found on:
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy).
 
+## Specific Usage: Permissions Policy
+
 ## Specific Usage: Powered By
 
 Some frameworks (in this case, ExpressJS) will automatically set a value into the response header "x-powered-by" that

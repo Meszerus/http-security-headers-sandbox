@@ -37,5 +37,31 @@ module.exports = {
                 }
             })
             .end();
-    }
+    },
+    "Given external script from non-whitelisted domain, When attempting to load the script, Then block it being loaded": (browser) => {
+        browser.url(`http://www.innocent.com:${port}/home`)
+            .waitForElementVisible("h1")
+            .getLog("browser", (result) => {
+                const securityLogs = result.filter((log) =>
+                    log.message.includes("Refused to load the script 'https://www.absolutely-random-website.com/example-script.js'"));
+
+                if(!securityLogs.length) {
+                    throw new Error("Expected CSP to prevent external script on non-whitelisted domains from executing successfully.");
+                }
+            })
+            .end();
+    },
+    "Given external script from whitelisted domain, When attempting to load the script, Then allow it being loaded": (browser) => {
+        browser.url(`http://www.innocent.com:${port}/home`)
+            .waitForElementVisible("h1")
+            .getLog("browser", (result) => {
+                const securityLogs = result.filter((log) =>
+                    log.message.includes("Refused to load the script 'https://code.jquery.com/jquery-3.6.0.slim.min.js'"));
+
+                if(securityLogs.length) {
+                    throw new Error("Expected CSP to allow external script on whitelisted domains to execute successfully.");
+                }
+            })
+            .end();
+    },
 };

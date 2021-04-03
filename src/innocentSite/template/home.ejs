@@ -10,6 +10,11 @@
             <a id="evilLinkHttp" href="http://www.evil.com/home">http</a> and
             <a id="evilLinkHttps" href="https://www.evil.com/home">https</a> links to evil.com's home page.
         </p>
+        <!-- In "secure" mode: BLOCK all inline scripts -->
         <script>console.log("innocent.com - this log comes from an inline script.");</script>
+        <!-- In "secure" mode: BLOCK all external scripts hosted on non-whitelisted domains -->
+        <script src="https://www.absolutely-random-website.com/example-script.js"></script>
+        <!-- In "secure" mode: ALLOW all external scripts hosted on whitelisted domains -->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
     </body>
 </HTML>

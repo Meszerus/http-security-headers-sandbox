@@ -17,6 +17,6 @@ module.exports = helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: PERMISSIVE_DIRECTIVE_VALUES,
         frameAncestors: "'none'",
-        scriptSrc: "https://cdn.innocent.com"
+        scriptSrc: "https://code.jquery.com"
     }
 });
