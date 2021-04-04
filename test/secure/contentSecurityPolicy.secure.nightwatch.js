@@ -26,14 +26,27 @@ module.exports = {
             })
             .end();
     },
-    "Will prevent inline scripts from executing": (browser) => {
+    "Given inline script missing crypto-nonce, When attempting to load the script, Then block it being loaded": (browser) => {
         browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {
-                const securityLogs = result.filter((log) => log.message.includes("Refused to execute inline script"));
+                const securityLogs = result.filter((log) => log.message.includes("innocent.com - this log comes from a BAD inline script."));
+
+                if(securityLogs.length) {
+                    throw new Error("Expected CSP to prevent inline script from executing successfully.");
+                }
+            })
+            .end();
+    },
+    "Given inline script with crypto-nonce, When attempting to load the script, Then allow it being loaded": (browser) => {
+        browser.url(`http://www.innocent.com:${port}/home`)
+            .waitForElementVisible("h1")
+            .getLog("browser", (result) => {
+                console.log(result);
+                const securityLogs = result.filter((log) => log.message.includes("innocent.com - this log comes from a GOOD inline script."));
 
                 if(!securityLogs.length) {
-                    throw new Error("Expected CSP to prevent inline script from executing successfully.");
+                    throw new Error("Expected CSP to allow inline script to execute successfully.");
                 }
             })
             .end();
