@@ -18,6 +18,7 @@ if([ "permissive", "secure" ].includes(protectionMode)) {
     }
 }
 
+app.use(require("./route/component/headerComponentRoute"));
 app.use(require("./route/page/homePageRoute"));
 
 module.exports = app;

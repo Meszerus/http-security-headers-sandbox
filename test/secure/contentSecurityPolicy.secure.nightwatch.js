@@ -14,7 +14,7 @@ module.exports = {
         server.close();
     },
 
-    "Will prevent iframe from loading": (browser) => {
+    "GIVEN non-whitelisted frame ancestor, WHEN they attempt to host us in an iframe, THEN block them from blocking us": (browser) => {
         browser.url(`http://www.evil.com:${port}/clickjack`)
             .waitForElementVisible("iframe")
             .getLog("browser", (result) => {
@@ -26,7 +26,19 @@ module.exports = {
             })
             .end();
     },
-    "Given inline script missing crypto-nonce, When attempting to load the script, Then block it being loaded": (browser) => {
+    "GIVEN self frame ancestor, WHEN we attempt to host us in an iframe, THEN allow it being loaded": (browser) => {
+        browser.url(`http://www.innocent.com:${port}/home`)
+            .waitForElementVisible("iframe")
+            .getLog("browser", (result) => {
+                const securityLogs = result.filter((log) => log.message.includes("Refused to frame 'http://www.innocent.com/'"));
+
+                if(securityLogs.length) {
+                    throw new Error("Expected CSP to allow iframe to load successfully.");
+                }
+            })
+            .end();
+    },
+    "GIVEN inline script missing crypto-nonce, WHEN attempting to load the script, THEN block it being loaded": (browser) => {
         browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {
@@ -38,7 +50,7 @@ module.exports = {
             })
             .end();
     },
-    "Given inline script with crypto-nonce, When attempting to load the script, Then allow it being loaded": (browser) => {
+    "GIVEN inline script with crypto-nonce, WHEN attempting to load the script, THEN allow it being loaded": (browser) => {
         browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {
@@ -51,7 +63,7 @@ module.exports = {
             })
             .end();
     },
-    "Given external script from non-whitelisted domain, When attempting to load the script, Then block it being loaded": (browser) => {
+    "GIVEN external script from non-whitelisted domain, WHEN attempting to load the script, THEN block it being loaded": (browser) => {
         browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {
@@ -64,7 +76,7 @@ module.exports = {
             })
             .end();
     },
-    "Given external script from whitelisted domain, When attempting to load the script, Then allow it being loaded": (browser) => {
+    "GIVEN external script from whitelisted domain, WHEN attempting to load the script, THEN allow it being loaded": (browser) => {
         browser.url(`http://www.innocent.com:${port}/home`)
             .waitForElementVisible("h1")
             .getLog("browser", (result) => {

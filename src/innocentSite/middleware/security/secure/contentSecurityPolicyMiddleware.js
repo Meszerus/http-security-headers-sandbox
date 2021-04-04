@@ -16,7 +16,7 @@ const PERMISSIVE_DIRECTIVE_VALUES = [
 module.exports = helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: PERMISSIVE_DIRECTIVE_VALUES,
-        frameAncestors: "'none'",
+        frameAncestors: "'self'",
         scriptSrc: [ "https://code.jquery.com", (req, res) => `'nonce-${res.locals.nonce}'` ]
     }
 });
